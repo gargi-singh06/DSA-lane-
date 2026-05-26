@@ -13,6 +13,43 @@ function Signup() {
     codeforcesHandle: "",
     leetcodeUsername: ""
   });
+  const getPasswordStrength = (password) =>{
+    if(!password){
+      return{
+        label: "",
+        width: "0%",
+        color: "",
+        emoji: "",
+      };
+    }
+    const hasUpperCase= /[A-Z]/.test(password);
+    const hasLowerCase=/[a-z]/.test(password);
+    const hasSpecialChar=/[~!@#$%^&*()_]/.test(password);
+    const hasNumber=/[0-9]/.test(password);
+    if((password.length >5 || password.length==5)  && hasUpperCase && hasLowerCase){
+      return{
+        label: "Medium",
+        color: "Yellow",
+        width: "60%",
+        emoji: "",
+      }
+    };
+    if(password.length==10 && hasUpperCase && hasLowerCase && hasSpecialChar && hasNumber){
+      return{
+        label: "Strong",
+        color: "Green",
+        width: "100%",
+        emoji: "",
+      }
+    };
+      return{
+        label: "Weak",
+        color: "Red",
+        width: "30%",
+        emoji: "",
+    };
+  };
+  const passwordStrength=getPasswordStrength(data.password);
 
   const [loading, setLoading] = useState(false);
 
@@ -82,6 +119,7 @@ function Signup() {
         />
 
         {/* PASSWORD */}
+        <div className="PassSection">
         <input
           type="password"
           placeholder="Password"
@@ -91,6 +129,21 @@ function Signup() {
           }
           onKeyDown={(e) => e.key === "Enter" && handleSignup()}
         />
+        {data.password && (
+          <div className="overallstrength">
+            <div className="bar">
+              <div className="strength"
+              style={{width: passwordStrength.width, bgcolor: passwordStrength.color,}}
+              />
+              </div>
+              <p className="Text"
+              style={{color: passwordStrength.color}}
+              >
+                {passwordStrength.emoji} {passwordStrength.label}
+              </p>
+              </div>
+          )}
+        </div>
 
         {/* CODEFORCES */}
         <input
