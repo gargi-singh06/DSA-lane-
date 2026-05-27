@@ -86,15 +86,15 @@ function Dashboard() {
   };
 
   const topics = [
-    ["arrays", <FaCubes />, "Arrays"],
-    ["linkedlist", <FaProjectDiagram />, "Linked List"],
-    ["stack", <FaLayerGroup />, "Stack"],
-    ["queue", <FaDatabase />, "Queue"],
-    ["tree", <FaTree />, "Trees"],
-    ["graph", <FaNetworkWired />, "Graphs"],
-    ["dp", <FaBrain />, "DP"],
-    ["greedy", <FaBolt />, "Greedy"],
-    ["cp", <FaFlagCheckered />, "CP"]
+    ["Arrays", <FaCubes />, "Arrays"],
+    ["Linked List", <FaProjectDiagram />, "Linked List"],
+    ["Stack", <FaLayerGroup />, "Stack"],
+    ["Queue", <FaDatabase />, "Queue"],
+    ["Tree", <FaTree />, "Trees"],
+    ["Graph", <FaNetworkWired />, "Graphs"],
+    ["DP", <FaBrain />, "DP"],
+    ["Greedy", <FaBolt />, "Greedy"],
+    ["CP", <FaFlagCheckered />, "CP"]
   ];
 
   return (

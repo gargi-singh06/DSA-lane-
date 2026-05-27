@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { FaCode } from "react-icons/fa";
 import "../App.css";
+import { FaCode, FaCheck, FaShieldAlt, FaExclamationTriangle } from "react-icons/fa";
 
 function Signup() {
   const navigate = useNavigate();
@@ -26,27 +26,27 @@ function Signup() {
     const hasLowerCase=/[a-z]/.test(password);
     const hasSpecialChar=/[~!@#$%^&*()_]/.test(password);
     const hasNumber=/[0-9]/.test(password);
-    if((password.length >5 || password.length==5)  && hasUpperCase && hasLowerCase){
-      return{
-        label: "Medium",
-        color: "Yellow",
-        width: "60%",
-        emoji: "",
-      }
-    };
     if(password.length==10 && hasUpperCase && hasLowerCase && hasSpecialChar && hasNumber){
       return{
         label: "Strong",
         color: "Green",
         width: "100%",
-        emoji: "",
+        emoji: <FaCheck />,
+      }
+    };
+    if((password.length >5 || password.length==5)  && hasUpperCase && hasLowerCase){
+      return{
+        label: "Medium",
+        color: "Yellow",
+        width: "60%",
+        emoji: <FaShieldAlt />,
       }
     };
       return{
         label: "Weak",
         color: "Red",
         width: "30%",
-        emoji: "",
+        emoji: <FaExclamationTriangle />,
     };
   };
   const passwordStrength=getPasswordStrength(data.password);
@@ -58,6 +58,15 @@ function Signup() {
 
     if (!username || !email || !password) {
       alert("Please fill all required fields");
+      return;
+    }
+     const hasUpperCase= /[A-Z]/.test(password);
+    const hasLowerCase=/[a-z]/.test(password);
+    const hasSpecialChar=/[~!@#$%^&*()_]/.test(password);
+    const hasNumber=/[0-9]/.test(password);
+    const validPassword= hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar && password.length==10;
+    if(!validPassword){
+      alert("Enter a Valid Password");
       return;
     }
 
@@ -123,6 +132,7 @@ function Signup() {
         <input
           type="password"
           placeholder="Password"
+          maxLength={10}
           value={data.password}
           onChange={(e) =>
             setData({ ...data, password: e.target.value })
@@ -133,7 +143,7 @@ function Signup() {
           <div className="overallstrength">
             <div className="bar">
               <div className="strength"
-              style={{width: passwordStrength.width, bgcolor: passwordStrength.color,}}
+              style={{width: passwordStrength.width, backgroundColor: passwordStrength.color,}}
               />
               </div>
               <p className="Text"
