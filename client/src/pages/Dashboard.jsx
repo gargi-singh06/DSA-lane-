@@ -154,42 +154,43 @@ function Dashboard() {
             </button>
           </div>
 
-          {/* POSTS */}
-          {posts
-            .filter(p => (p.channel ?? "arrays") === channel)
-            .map((p) => (
-              <div key={p._id} className="post-card">
+         {/* POSTS */}
+{posts
+  .filter((p) => (p.channel ?? "arrays") === channel)
+  .map((p) => (
+    <div key={p._id} className="post-card">
+      <div className="post-header">
+        <h4>{p.title}</h4>
 
-                <h4>{p.title}</h4>
-                <p>{p.body}</p>
-                <span className="author">{p.author}</span>
+        {p.author === username && (
+          <button
+            className="delete-post-btn"
+            onClick={() => deletePost(p._id)}
+          >
+            <FaTrash />
+          </button>
+        )}
+      </div>
 
-                {/* ACTIONS */}
-                <div className="post-actions">
+      <p className="post-body">{p.body}</p>
 
-                  <span onClick={() => upvote(p._id)}>
-                    <FaThumbsUp /> {p.upvotes}
-                  </span>
+      <span className="author">— {p.author}</span>
 
-                  <span onClick={() => downvote(p._id)}>
-                    <FaThumbsDown /> {p.downvotes}
-                  </span>
+      <div className="post-actions">
+        <button onClick={() => upvote(p._id)}>
+          <FaThumbsUp /> {p.upvotes}
+        </button>
 
-                  {p.author === username && (
-                    <span onClick={() => deletePost(p._id)}>
-                      <FaTrash />
-                    </span>
-                  )}
+        <button onClick={() => downvote(p._id)}>
+          <FaThumbsDown /> {p.downvotes}
+        </button>
+      </div>
 
-                </div>
-
-              </div>
-            ))}
-
+    </div>
+  ))}
         </div>
       </div>
     </>
   );
 }
-
 export default Dashboard;

@@ -98,7 +98,7 @@ body {
 
 /* INPUTS */
 input, textarea {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   border-radius: 8px;
   border: none;
@@ -148,4 +148,84 @@ input, textarea {
   margin-top: 6px;
   font-size: 14px;
   font-weight: 600;
+}
+.post-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 22px;
+  margin-top: 20px;
+  transition: 0.3s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.15);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.post-header h4 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+}
+
+.post-body {
+  font-size: 16px;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.author {
+  display: block;
+  font-size: 14px;
+  color: #9ca3af;
+  font-style: italic;
+  margin-bottom: 18px;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.post-actions button {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+
+.post-actions button:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.delete-post-btn {
+  background: rgba(239, 68, 68, 0.15);
+  border: none;
+  color: #ef4444;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.delete-post-btn:hover {
+  background: rgba(239, 68, 68, 0.25);
 }
