@@ -229,3 +229,16 @@ input, textarea {
 .delete-post-btn:hover {
   background: rgba(239, 68, 68, 0.25);
 }
+.password-suggest {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #2563eb;
+  cursor: pointer;
+  text-align: right;
+  text-decoration: underline;
+  transition: 0.2s;
+}
+
+.password-suggest:hover {
+  color: #1d4ed8;
+}

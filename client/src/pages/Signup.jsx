@@ -49,6 +49,22 @@ function Signup() {
         emoji: <FaExclamationTriangle />,
     };
   };
+  const generatePassword=()=>{
+      const upper="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const lower="abcdefghijklmnoprstuvwxyz";
+      const number="0123456789";
+      const special="!@#$%^&*()_~";
+      const allchars=upper+lower+number+special;
+      let password=upper[Math.floor(Math.random()*upper.length)]+
+      lower[Math.floor(Math.random()*lower.length)]+
+      special[Math.floor(Math.random()*special.length)]+
+      number[Math.floor(Math.random()*number.length)];
+      while (password.length<10){
+        password=password+allchars[Math.floor(Math.random()*allchars.length)];
+      }
+      password=password.split("").sort(()=>Math.random()-0.5).join("");
+      setData({...data,password});
+    };
   const passwordStrength=getPasswordStrength(data.password);
 
   const [loading, setLoading] = useState(false);
@@ -139,6 +155,10 @@ function Signup() {
           }
           onKeyDown={(e) => e.key === "Enter" && handleSignup()}
         />
+        <p className="password-suggest"
+          onClick={generatePassword}>
+            Suggest Strong Password
+          </p>
         {data.password && (
           <div className="overallstrength">
             <div className="bar">
