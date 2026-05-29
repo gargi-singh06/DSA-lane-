@@ -5,7 +5,6 @@ import { FaCode, FaCheck, FaShieldAlt, FaExclamationTriangle } from "react-icons
 
 function Signup() {
   const navigate = useNavigate();
-
   const [data, setData] = useState({
     username: "",
     email: "",

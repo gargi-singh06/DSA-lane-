@@ -105,8 +105,8 @@ function Dashboard() {
           <FaCode /> DSA-Lane
         </div>
 
-        <div>
-          {username} (Beginner)
+        <div className="logout_username">
+          {username}
           <button className="logout-btn" onClick={handleLogout}>
             Logout
           </button>
@@ -136,7 +136,7 @@ function Dashboard() {
           {/* CREATE POST */}
           <div className="card">
             <h2>{channel} Discussion</h2>
-
+            <div className="postBoxes">
             <input
               placeholder="Post title..."
               value={title}
@@ -148,10 +148,12 @@ function Dashboard() {
               value={body}
               onChange={(e) => setBody(e.target.value)}
             />
-
+            </div>
+            <div className="postButton">
             <button className="primary-btn" onClick={addPost}>
               Post
             </button>
+            </div>
           </div>
 
          {/* POSTS */}

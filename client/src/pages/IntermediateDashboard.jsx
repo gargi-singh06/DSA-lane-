@@ -105,8 +105,8 @@ function IntermediateDashboard() {
           <FaCode /> DSA-Lane
         </div>
 
-        <div>
-          {username} (Intermediate)
+        <div className="logout_username">
+          {username}
           <button className="logout-btn" onClick={handleLogout}>
             Logout
           </button>
@@ -136,7 +136,7 @@ function IntermediateDashboard() {
           {/* CREATE POST */}
           <div className="card">
             <h2>{channel} Discussion</h2>
-
+            <div className="inputBoxes">
             <input
               placeholder="Post title..."
               value={title}
@@ -148,10 +148,12 @@ function IntermediateDashboard() {
               value={body}
               onChange={(e) => setBody(e.target.value)}
             />
-
+            </div>
+            <div className="postButton">
             <button className="primary-btn" onClick={addPost}>
               Post
             </button>
+            </div>
           </div>
 
          {/* POSTS */}

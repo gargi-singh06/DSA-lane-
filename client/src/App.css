@@ -28,7 +28,7 @@ body {
 
 /* LOGOUT BUTTON */
 .logout-btn {
-  background: linear-gradient(90deg, #ef4444, #f97316);
+  background: linear-gradient(90deg, #6e1212, #430715);
   border: none;
   padding: 8px 14px;
   border-radius: 8px;
@@ -89,6 +89,8 @@ body {
 
 /* CARD */
 .card {
+  align-items: center;
+  justify-content: left;
   background: #020617;
   padding: 20px;
   border-radius: 12px;
@@ -98,7 +100,7 @@ body {
 
 /* INPUTS */
 input, textarea {
-  width: 90%;
+  width: 95%;
   padding: 10px;
   border-radius: 8px;
   border: none;
@@ -241,4 +243,20 @@ input, textarea {
 
 .password-suggest:hover {
   color: #1d4ed8;
+}
+.inputBoxes{
+  padding: 10px 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.postButton{
+  justify-content: left;
+  align-items: left;
+  margin-bottom: 25px;
+  height: 8px;
+  width:10px;
+}
+.logout_username{
+  display: flex;
+  gap: 15px;
 }
