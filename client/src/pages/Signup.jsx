@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../App.css";
-import { FaCode, FaCheck, FaShieldAlt, FaExclamationTriangle } from "react-icons/fa";
+import { FaCode, FaCheck, FaShieldAlt, FaExclamationTriangle, FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Signup() {
   const navigate = useNavigate();
@@ -12,6 +12,7 @@ function Signup() {
     codeforcesHandle: "",
     leetcodeUsername: ""
   });
+  const [showPassword, setShowPassword]=useState(false);
   const getPasswordStrength = (password) =>{
     if(!password){
       return{
@@ -144,8 +145,9 @@ function Signup() {
 
         {/* PASSWORD */}
         <div className="PassSection">
+          <div className="inputContainer">
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           placeholder="Password"
           maxLength={10}
           value={data.password}
@@ -154,6 +156,10 @@ function Signup() {
           }
           onKeyDown={(e) => e.key === "Enter" && handleSignup()}
         />
+        <button className="eyeBtn" onClick={()=>setShowPassword(!showPassword)}>
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </button>
+        </div>
         <p className="password-suggest"
           onClick={generatePassword}>
             Suggest Strong Password

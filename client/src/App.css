@@ -260,3 +260,17 @@ input, textarea {
   display: flex;
   gap: 15px;
 }
+.inputContainer{
+  display: inline-block;
+  position: relative;
+}
+.eyeBtn{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+}
