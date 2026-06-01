@@ -1,18 +1,29 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import DashboardHome from "./DashboardHome";
 import {
-  FaCode, FaLayerGroup, FaProjectDiagram,
-  FaTree, FaNetworkWired, FaCubes, FaDatabase,
-  FaBrain, FaBolt, FaFlagCheckered,
-  FaThumbsUp, FaThumbsDown, FaTrash
+  FaCode,
+  FaLayerGroup,
+  FaProjectDiagram,
+  FaTree,
+  FaNetworkWired,
+  FaCubes,
+  FaDatabase,
+  FaBrain,
+  FaBolt, FaChartPie,
+  FaFlagCheckered,
+  FaThumbsUp,
+  FaThumbsDown,
+  FaTrash
 } from "react-icons/fa";
+
 import "../App.css";
 
 function Dashboard() {
   const navigate = useNavigate();
   const username = localStorage.getItem("username");
 
-  const [channel, setChannel] = useState("arrays");
+  const [channel, setChannel] = useState(null);
   const [posts, setPosts] = useState([]);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -28,7 +39,7 @@ function Dashboard() {
     fetchPosts();
   }, []);
 
-  //ADD POST
+  // ADD POST
   const addPost = async () => {
     if (!title || !body) return;
 
@@ -52,50 +63,62 @@ function Dashboard() {
 
   // UPVOTE
   const upvote = async (id) => {
-    await fetch(`http://localhost:3000/api/beginner/posts/${id}/upvote`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username })
-    });
+    await fetch(
+      `http://localhost:3000/api/beginner/posts/${id}/upvote`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username })
+      }
+    );
+
     fetchPosts();
   };
 
   // DOWNVOTE
   const downvote = async (id) => {
-    await fetch(`http://localhost:3000/api/beginner/posts/${id}/downvote`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username })
-    });
+    await fetch(
+      `http://localhost:3000/api/beginner/posts/${id}/downvote`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username })
+      }
+    );
+
     fetchPosts();
   };
 
-  //  DELETE
+  // DELETE
   const deletePost = async (id) => {
     await fetch(`http://localhost:3000/api/beginner/posts/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username })
     });
+
     fetchPosts();
   };
 
+  // LOGOUT
   const handleLogout = () => {
     localStorage.clear();
     navigate("/");
   };
 
   const topics = [
-    ["Arrays", <FaCubes />, "Arrays"],
-    ["Linked List", <FaProjectDiagram />, "Linked List"],
-    ["Stack", <FaLayerGroup />, "Stack"],
-    ["Queue", <FaDatabase />, "Queue"],
-    ["Tree", <FaTree />, "Trees"],
-    ["Graph", <FaNetworkWired />, "Graphs"],
-    ["DP", <FaBrain />, "DP"],
-    ["Greedy", <FaBolt />, "Greedy"],
-    ["CP", <FaFlagCheckered />, "CP"]
-  ];
+  ["HOME", <FaChartPie /> , "Dashboard"],
+
+  ["Arrays", <FaCubes />, "Arrays"],
+  ["Linked List", <FaProjectDiagram />, "Linked List"],
+  ["Stack", <FaLayerGroup />, "Stack"],
+  ["Queue", <FaDatabase />, "Queue"],
+  ["Tree", <FaTree />, "Trees"],
+  ["Graph", <FaNetworkWired />, "Graphs"],
+  ["DP", <FaBrain />, "DP"],
+  ["Greedy", <FaBolt />, "Greedy"],
+  ["CP", <FaFlagCheckered />, "CP"]
+];
 
   return (
     <>
@@ -107,7 +130,11 @@ function Dashboard() {
 
         <div className="logout_username">
           {username}
-          <button className="logout-btn" onClick={handleLogout}>
+
+          <button
+            className="logout-btn"
+            onClick={handleLogout}
+          >
             Logout
           </button>
         </div>
@@ -122,77 +149,124 @@ function Dashboard() {
           {topics.map(([key, icon, label]) => (
             <div
               key={key}
-              className={`sidebar-item ${channel === key ? "active" : ""}`}
-              onClick={() => setChannel(key)}
+             className={`sidebar-item ${
+  (key === "HOME" && channel === null) ||
+  channel === key
+    ? "active"
+    : ""
+}`}
+              onClick={() => {
+  if (key === "HOME") {
+    setChannel(null);
+  } else {
+    setChannel(key);
+  }
+}}
             >
               {icon} {label}
             </div>
           ))}
         </div>
 
-        {/* MAIN */}
+        {/* MAIN CONTENT */}
         <div className="main">
 
-          {/* CREATE POST */}
-          <div className="card">
-            <h2>{channel} Discussion</h2>
-            <div className="postBoxes">
-            <input
-              placeholder="Post title..."
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
+          {!channel ? (
+            <DashboardHome />
+          ) : (
+            <>
+              {/* CREATE POST */}
+              <div className="card">
+                <h2>{channel} Discussion</h2>
 
-            <textarea
-              placeholder="Write your question..."
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-            />
-            </div>
-            <div className="postButton">
-            <button className="primary-btn" onClick={addPost}>
-              Post
-            </button>
-            </div>
-          </div>
+                <div className="postBoxes">
+                  <input
+                    placeholder="Post title..."
+                    value={title}
+                    onChange={(e) =>
+                      setTitle(e.target.value)
+                    }
+                  />
 
-         {/* POSTS */}
-{posts
-  .filter((p) => (p.channel ?? "arrays") === channel)
-  .map((p) => (
-    <div key={p._id} className="post-card">
-      <div className="post-header">
-        <h4>{p.title}</h4>
+                  <textarea
+                    placeholder="Write your question..."
+                    value={body}
+                    onChange={(e) =>
+                      setBody(e.target.value)
+                    }
+                  />
+                </div>
 
-        {p.author === username && (
-          <button
-            className="delete-post-btn"
-            onClick={() => deletePost(p._id)}
-          >
-            <FaTrash />
-          </button>
-        )}
-      </div>
+                <div className="postButton">
+                  <button
+                    className="primary-btn"
+                    onClick={addPost}
+                  >
+                    Post
+                  </button>
+                </div>
+              </div>
 
-      <p className="post-body">{p.body}</p>
+              {/* POSTS */}
+              {posts
+                .filter(
+                  (p) =>
+                    (p.channel ?? "Arrays") === channel
+                )
+                .map((p) => (
+                  <div
+                    key={p._id}
+                    className="post-card"
+                  >
+                    <div className="post-header">
+                      <h4>{p.title}</h4>
 
-      <span className="author">— {p.author}</span>
+                      {p.author === username && (
+                        <button
+                          className="delete-post-btn"
+                          onClick={() =>
+                            deletePost(p._id)
+                          }
+                        >
+                          <FaTrash />
+                        </button>
+                      )}
+                    </div>
 
-      <div className="post-actions">
-        <button onClick={() => upvote(p._id)}>
-          <FaThumbsUp /> {p.upvotes}
-        </button>
+                    <p className="post-body">
+                      {p.body}
+                    </p>
 
-        <button onClick={() => downvote(p._id)}>
-          <FaThumbsDown /> {p.downvotes}
-        </button>
-      </div>
+                    <span className="author">
+                      — {p.author}
+                    </span>
 
-    </div>
-  ))}
+                    <div className="post-actions">
+                      <button
+                        onClick={() =>
+                          upvote(p._id)
+                        }
+                      >
+                        <FaThumbsUp /> {p.upvotes}
+                      </button>
+
+                      <button
+                        onClick={() =>
+                          downvote(p._id)
+                        }
+                      >
+                        <FaThumbsDown /> {p.downvotes}
+                      </button>
+                    </div>
+                  </div>
+                ))}
+            </>
+          )}
+
         </div>
       </div>
     </>
   );
 }
+
 export default Dashboard;
