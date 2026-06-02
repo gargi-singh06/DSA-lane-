@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import AdvanceHome from "./AdvanceHome";
 import {
   FaCode, FaLayerGroup, FaProjectDiagram,
   FaTree, FaNetworkWired, FaCubes, FaDatabase,
   FaBrain, FaBolt, FaFlagCheckered,
-  FaThumbsUp, FaThumbsDown, FaTrash
+  FaThumbsUp, FaThumbsDown, FaTrash, FaChartPie
 } from "react-icons/fa";
 import "../App.css";
 
@@ -12,7 +13,7 @@ function AdvancedDashboard() {
   const navigate = useNavigate();
   const username = localStorage.getItem("username");
 
-  const [channel, setChannel] = useState("arrays");
+  const [channel, setChannel] = useState(null);
   const [posts, setPosts] = useState([]);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -86,6 +87,7 @@ function AdvancedDashboard() {
   };
 
   const topics = [
+    ["HOME", <FaChartPie /> , "Dashboard"],
     ["Arrays", <FaCubes />, "Arrays"],
     ["Linked List", <FaProjectDiagram />, "Linked List"],
     ["Stack", <FaLayerGroup />, "Stack"],
@@ -122,43 +124,68 @@ function AdvancedDashboard() {
           {topics.map(([key, icon, label]) => (
             <div
               key={key}
-              className={`sidebar-item ${channel === key ? "active" : ""}`}
-              onClick={() => setChannel(key)}
+              className={`sidebar-item ${
+  (key === "HOME" && channel === null) ||
+  channel === key
+    ? "active"
+    : ""
+}`}
+              onClick={() => {
+  if (key === "HOME") {
+    setChannel(null);
+  } else {
+    setChannel(key);
+  }
+}}
             >
               {icon} {label}
             </div>
           ))}
         </div>
 
-        {/* MAIN */}
-        <div className="main">
+         {/* MAIN CONTENT */}
+                <div className="main">
 
-          {/* CREATE POST */}
-          <div className="card">
-            <h2>{channel} Discussion</h2>
-            <div className="inputBoxes">
-            <input
-              placeholder="Post title..."
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
+                  {!channel ? (
+                    <AdvanceHome />
+                  ) : (
+                    <>
 
-            <textarea
-              placeholder="Write your question..."
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-            />
-            </div>
-            <div className="postButton">
-            <button className="primary-btn" onClick={addPost}>
-              Post
-            </button>
-            </div>
-          </div>
+         {/* CREATE POST */}
+              <div className="card">
+                <h2>{channel} Discussion</h2>
+
+                <div className="postBoxes">
+                  <input
+                    placeholder="Post title..."
+                    value={title}
+                    onChange={(e) =>
+                      setTitle(e.target.value)
+                    }
+                  />
+
+                  <textarea
+                    placeholder="Write your question..."
+                    value={body}
+                    onChange={(e) =>
+                      setBody(e.target.value)
+                    }
+                  />
+                </div>
+
+                <div className="postButton">
+                  <button
+                    className="primary-btn"
+                    onClick={addPost}
+                  >
+                    Post
+                  </button>
+                </div>
+              </div>
 
          {/* POSTS */}
 {posts
-  .filter((p) => (p.channel ?? "arrays") === channel)
+  .filter((p) => (p.channel ?? "Arrays") === channel)
   .map((p) => (
     <div key={p._id} className="post-card">
       <div className="post-header">
@@ -190,6 +217,9 @@ function AdvancedDashboard() {
 
     </div>
   ))}
+        </>
+          )}
+
         </div>
       </div>
     </>
