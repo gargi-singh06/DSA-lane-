@@ -14,7 +14,7 @@ import {
   FaFlagCheckered,
   FaThumbsUp,
   FaThumbsDown,
-  FaTrash
+  FaTrash, FaKey, FaMountain, FaRedo, FaFont, FaSearch
 } from "react-icons/fa";
 
 import "../App.css";
@@ -108,16 +108,20 @@ function Dashboard() {
 
   const topics = [
   ["HOME", <FaChartPie /> , "Dashboard"],
-
-  ["Arrays", <FaCubes />, "Arrays"],
-  ["Linked List", <FaProjectDiagram />, "Linked List"],
-  ["Stack", <FaLayerGroup />, "Stack"],
-  ["Queue", <FaDatabase />, "Queue"],
-  ["Tree", <FaTree />, "Trees"],
-  ["Graph", <FaNetworkWired />, "Graphs"],
-  ["DP", <FaBrain />, "DP"],
-  ["Greedy", <FaBolt />, "Greedy"],
-  ["CP", <FaFlagCheckered />, "CP"]
+      ["Arrays", <FaCubes />, "Arrays"],
+      ["Linked List", <FaProjectDiagram />, "Linked List"],
+      ["Stack", <FaLayerGroup />, "Stack"],
+      ["Queue", <FaDatabase />, "Queue"],
+      ["Tree", <FaTree />, "Trees"],
+      ["Graph", <FaNetworkWired />, "Graphs"],
+      ["Hashing", <FaKey />, "Hashing"],
+      ["Heap", <FaMountain />, "Heap"],
+       ["String", <FaFont />, "String"],
+       ["Binary Search", <FaSearch />, "Binary Search"],
+      ["Dynamic Programming", <FaBrain />, "Dynamic Programming"],
+      ["Greedy", <FaBolt />, "Greedy"],
+      ["Recursion", <FaRedo />, "Recursion & Backtracking"],
+      ["Competitive Programming", <FaFlagCheckered />, "Competitive Programming"]
 ];
 
   return (

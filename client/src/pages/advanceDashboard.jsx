@@ -5,7 +5,8 @@ import {
   FaCode, FaLayerGroup, FaProjectDiagram,
   FaTree, FaNetworkWired, FaCubes, FaDatabase,
   FaBrain, FaBolt, FaFlagCheckered,
-  FaThumbsUp, FaThumbsDown, FaTrash, FaChartPie
+  FaThumbsUp, FaThumbsDown, FaTrash, FaChartPie,
+  FaKey, FaMountain, FaFont, FaRedo, FaSearch
 } from "react-icons/fa";
 import "../App.css";
 
@@ -94,9 +95,14 @@ function AdvancedDashboard() {
     ["Queue", <FaDatabase />, "Queue"],
     ["Tree", <FaTree />, "Trees"],
     ["Graph", <FaNetworkWired />, "Graphs"],
-    ["DP", <FaBrain />, "DP"],
+    ["Hashing", <FaKey />, "Hashing"],
+    ["Heap", <FaMountain />, "Heap"],
+     ["String", <FaFont />, "String"],
+     ["Binary Search", <FaSearch />, "Binary Search"],
+    ["Dynamic Programming", <FaBrain />, "Dynamic Programming"],
     ["Greedy", <FaBolt />, "Greedy"],
-    ["CP", <FaFlagCheckered />, "CP"]
+    ["Recursion", <FaRedo />, "Recursion & Backtracking"],
+    ["Competitive Programming", <FaFlagCheckered />, "Competitive Programming"]
   ];
 
   return (
