@@ -11,12 +11,29 @@
 html,
 body,
 #root{
-  height:100%;
+  min-height:100vh;
   width:100%;
 }
-
 body{
-  overflow:hidden;
+  overflow-x:hidden;
+  overflow-y:hidden;
+
+  font-family:"Poppins",sans-serif;
+  color:#f8fafc;
+
+  background:
+  radial-gradient(
+    circle at 0% 0%,
+    rgba(124,58,237,.18),
+    transparent 35%
+  ),
+  radial-gradient(
+    circle at 100% 100%,
+    rgba(34,211,238,.15),
+    transparent 35%
+  ),
+  #050816;
+
 
   font-family:
   "Poppins",
@@ -214,7 +231,7 @@ body::after{
   padding:40px 60px;
 }
 .auth-container{
-  min-height:100vh;
+  height:100vh;
 
   display:flex;
   justify-content:center;
@@ -570,7 +587,7 @@ textarea:focus{
 
 .auth-card h1{
   margin:18px 0 30px;
-  font-size:52px;
+  font-size:48px;
   line-height:1.1;
 }
 
@@ -871,7 +888,9 @@ textarea:focus{
 
 }
 @media(max-width:768px){
-
+.auth-container{
+    padding:20px 15px 50px;
+  }
 .auth-card{
   width:100%;
   max-width:100%;
