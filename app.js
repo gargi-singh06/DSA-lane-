@@ -9,7 +9,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
-
+const homeRoutes = require("./server/routes/home");
 const http = require("http");
 const { Server } = require("socket.io");
 const path = require("path");
@@ -30,7 +30,7 @@ app.use("/api/beginner", beginnerRoutes);
 app.use("/api/advanced", advancedRoutes);
 app.use("/auth", authRoutes);
 app.use("/leaderboard", leaderboardRoutes);
-
+app.use("/api/home", homeRoutes);
 app.use(express.static("public"));
 
 const server = http.createServer(app);

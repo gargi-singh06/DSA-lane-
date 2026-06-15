@@ -3,10 +3,10 @@ const router = express.Router();
 const User = require("../models/user");
 const auth = require("../middleware/authMiddleware");
 
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const users = await User.find()
-            .sort({ reputation: -1 })
+            .sort({ rating: -1 })
             .limit(10);
         res.json(users);
     } catch (err) {

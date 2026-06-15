@@ -30,6 +30,7 @@ function Login() {
       if (res.ok) {
         localStorage.setItem("username", result.username);
         localStorage.setItem("level", result.level);
+        localStorage.setItem("token", result.token);
 
         if (result.level === "Starter") navigate("/dashboard");
         else if (result.level === "Intermediate") navigate("/intermediate");
