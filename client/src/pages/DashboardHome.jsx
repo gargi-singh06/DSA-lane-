@@ -8,8 +8,54 @@ import {
   FaBolt,
 } from "react-icons/fa";
 
+import { useEffect, useState } from "react";
+
 function DashboardHome() {
   const username = localStorage.getItem("username");
+
+  const [stats, setStats] = useState({
+    totalUsers: 0,
+    totalPosts: 0,
+    userPosts: 0,
+    userUpvotes: 0,
+    latestPosts: [],
+    trendingTopics: []
+  });
+
+  const [leaders, setLeaders] = useState([]);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const res = await fetch(
+          `http://localhost:3000/api/home/Beginner/${username}`
+        );
+
+        const data = await res.json();
+
+        setStats(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    const fetchLeaderboard = async () => {
+      try {
+        const res = await fetch(
+          "http://localhost:3000/leaderboard"
+        );
+
+        const data = await res.json();
+
+        setLeaders(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchStats();
+    fetchLeaderboard();
+  }, [username]);
 
   return (
     <div className="dashboard-home">
@@ -17,7 +63,8 @@ function DashboardHome() {
       {/* HERO */}
       <div className="home-hero">
         <div>
-          <h1>Welcome Back,</h1>
+          <h1>Welcome Back, {username}</h1>
+
           <p>
             Continue solving problems, contributing solutions,
             and climbing the leaderboard.
@@ -30,26 +77,26 @@ function DashboardHome() {
 
         <div className="stat-card">
           <FaComments className="stat-icon" />
-          <h2>24</h2>
+          <h2>{stats.totalPosts}</h2>
           <p>Discussions</p>
         </div>
 
         <div className="stat-card">
           <FaThumbsUp className="stat-icon" />
-          <h2>76</h2>
+          <h2>{stats.userUpvotes}</h2>
           <p>Upvotes</p>
         </div>
 
         <div className="stat-card">
           <FaUsers className="stat-icon" />
-          <h2>152</h2>
+          <h2>{stats.totalUsers}</h2>
           <p>Community Members</p>
         </div>
 
         <div className="stat-card">
           <FaFire className="stat-icon" />
-          <h2>12</h2>
-          <p>Day Streak</p>
+          <h2>{stats.userPosts}</h2>
+          <p>Your Posts</p>
         </div>
 
       </div>
@@ -59,90 +106,122 @@ function DashboardHome() {
 
         {/* LEADERBOARD */}
         <div className="dashboard-card leaderboard-card">
+
           <h2>
             <FaTrophy /> Leaderboard
           </h2>
 
-          <div className="leader-item rank1">
-            <span>#1 Rahul Sharma</span>
-            <strong>980 pts</strong>
-          </div>
+          {leaders.length === 0 ? (
+            <p>No leaderboard data</p>
+          ) : (
+            Array.isArray(leaders) &&
+  leaders.slice(0, 10).map((user, index) => (
+              <div
+                key={user._id}
+                className={`leader-item ${
+                  index === 0
+                    ? "rank1"
+                    : index === 1
+                    ? "rank2"
+                    : index === 2
+                    ? "rank3"
+                    : ""
+                }`}
+              >
+                <span>
+                  #{index + 1} {user.username}
+                </span>
 
-          <div className="leader-item rank2">
-            <span>#2 Priya Gupta</span>
-            <strong>920 pts</strong>
-          </div>
+                <strong>
+                  {user.rating}
+                </strong>
+              </div>
+            ))
+          )}
 
-          <div className="leader-item rank3">
-            <span>#3 Amit Kumar</span>
-            <strong>870 pts</strong>
-          </div>
-
-          <div className="leader-item">
-            <span>#4 {username}</span>
-            <strong>820 pts</strong>
-          </div>
         </div>
 
         {/* RECENT ACTIVITY */}
         <div className="dashboard-card activity-card">
+
           <h2>
             <FaChartLine /> Recent Activity
           </h2>
 
-          <div className="activity-item">
-            Posted a question in Arrays
-          </div>
+          {stats.latestPosts.length === 0 ? (
+            <div className="activity-item">
+              No recent activity
+            </div>
+          ) : (
+            stats.latestPosts.map((post) => (
+              <div
+                key={post._id}
+                className="activity-item"
+              >
+                {post.title}
+              </div>
+            ))
+          )}
 
-          <div className="activity-item">
-            Earned 5 Upvotes
-          </div>
-
-          <div className="activity-item">
-            Replied to Graphs Discussion
-          </div>
         </div>
 
         {/* CONTRIBUTION SUMMARY */}
         <div className="dashboard-card contribution-card">
+
           <h2>
             <FaThumbsUp /> Contribution Summary
           </h2>
 
           <div className="contribution-row">
             <span>Questions Posted</span>
-            <strong>18</strong>
-          </div>
-
-          <div className="contribution-row">
-            <span>Answers Given</span>
-            <strong>32</strong>
+            <strong>{stats.userPosts}</strong>
           </div>
 
           <div className="contribution-row">
             <span>Upvotes Earned</span>
-            <strong>76</strong>
+            <strong>{stats.userUpvotes}</strong>
           </div>
+
+          <div className="contribution-row">
+            <span>Total Discussions</span>
+            <strong>{stats.totalPosts}</strong>
+          </div>
+
         </div>
 
         {/* TRENDING TOPICS */}
         <div className="dashboard-card trending-card">
+
           <h2>
             <FaBolt /> Trending Topics
           </h2>
 
           <div className="topics-grid">
-            <span className="topic-chip">Arrays</span>
-            <span className="topic-chip">DP</span>
-            <span className="topic-chip">Graphs</span>
-            <span className="topic-chip">Trees</span>
-            <span className="topic-chip">Greedy</span>
-            <span className="topic-chip">Linked List</span>
-          </div>
+
+  {stats.trendingTopics.length > 0 ? (
+
+    stats.trendingTopics.map((topic) => (
+      <span
+        key={topic}
+        className="topic-chip"
+      >
+        {topic}
+      </span>
+    ))
+
+  ) : (
+
+    <span className="topic-chip">
+      No Topics Yet
+    </span>
+
+  )}
+
+</div>
+
         </div>
 
       </div>
-
     </div>
   );
 }
