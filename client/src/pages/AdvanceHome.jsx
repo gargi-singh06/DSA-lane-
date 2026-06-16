@@ -19,6 +19,7 @@ function AdvanceHome() {
     userPosts: 0,
     userUpvotes: 0,
     latestPosts: [],
+    trendingTopics: []
   });
 
   const [leaders, setLeaders] = useState([]);
@@ -196,13 +197,27 @@ function AdvanceHome() {
           </h2>
 
           <div className="topics-grid">
-            <span className="topic-chip">Arrays</span>
-            <span className="topic-chip">DP</span>
-            <span className="topic-chip">Graphs</span>
-            <span className="topic-chip">Trees</span>
-            <span className="topic-chip">Greedy</span>
-            <span className="topic-chip">Linked List</span>
-          </div>
+
+  {stats.trendingTopics.length > 0 ? (
+
+    stats.trendingTopics.map((topic) => (
+      <span
+        key={topic}
+        className="topic-chip"
+      >
+        {topic}
+      </span>
+    ))
+
+  ) : (
+
+    <span className="topic-chip">
+      No Topics Yet
+    </span>
+
+  )}
+
+</div>
 
         </div>
 
