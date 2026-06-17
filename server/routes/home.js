@@ -33,7 +33,7 @@ router.get("/:level/:username", async (req, res) => {
     // TRENDING TOPICS
     const allPosts = await Post.find({ level });
 
- const topicCounts = {};
+ const topicActivity = {};
 
 allPosts.forEach(post => {
 
@@ -43,8 +43,14 @@ allPosts.forEach(post => {
 
   topic = topic.trim().toLowerCase();
 
-  topicCounts[topic] =
-    (topicCounts[topic] || 0) + 1;
+  if (
+    !topicActivity[topic] ||
+    new Date(post.createdAt) >
+      new Date(topicActivity[topic])
+  ) {
+    topicActivity[topic] =
+      post.createdAt;
+  }
 });
 
     const displayNames = {
@@ -65,8 +71,12 @@ allPosts.forEach(post => {
   cp: "Competitive Programming"
 };
 
-const trendingTopics = Object.entries(topicCounts)
-  .sort((a, b) => b[1] - a[1])
+const trendingTopics = Object.entries(topicActivity)
+  .sort(
+    (a, b) =>
+      new Date(b[1]) -
+      new Date(a[1])
+  )
   .slice(0, 6)
   .map(([topic]) =>
     displayNames[topic] || topic

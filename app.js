@@ -24,6 +24,7 @@ const beginnerRoutes = require("./server/routes/beginner");
 const intermediateRoutes = require("./server/routes/intermediate");
 const advancedRoutes = require("./server/routes/advanced");
 
+
 // ROUTES
 app.use("/api/intermediate", intermediateRoutes);
 app.use("/api/beginner", beginnerRoutes);
