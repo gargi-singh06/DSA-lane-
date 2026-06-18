@@ -6,6 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "axios": "^1.13.6",
     "bcrypt": "^6.0.0",
     "cookie-parser": "~1.4.4",
@@ -22,7 +23,6 @@
   },
   "description": "",
   "main": "app.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/animeshmishra715/dsa-lane.git"

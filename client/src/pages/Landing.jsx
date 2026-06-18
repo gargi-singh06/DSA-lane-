@@ -1,4 +1,7 @@
 import heroVideo from "../assets/videos/hero-video.mp4";
+import CountUp from "react-countup";
+import { useEffect, useState } from "react";
+
 import "./Landing.css";
 import { Link } from "react-router-dom";
 
@@ -109,6 +112,114 @@ function Landing() {
         </p>
 
       </section>
+      <section className="stats-section">
+
+  <div className="stat-card">
+    <h2>500+</h2>
+    <p>Problems Solved</p>
+  </div>
+
+  <div className="stat-card">
+    <h2>1000+</h2>
+    <p>Community Posts</p>
+  </div>
+
+  <div className="stat-card">
+    <h2>200+</h2>
+    <p>Active Members</p>
+  </div>
+
+</section>
+<section className="journey">
+
+  <h2>Your DSA Journey</h2>
+
+  <div className="timeline">
+
+    <div className="step">
+      Sign Up
+    </div>
+
+    <div className="step">
+      Choose Level
+    </div>
+
+    <div className="step">
+      Solve Problems
+    </div>
+
+    <div className="step">
+      Join Discussions
+    </div>
+
+    <div className="step">
+      Become Interview Ready
+    </div>
+
+  </div>
+
+</section>
+<section className="community-preview">
+
+  <h2>Community Discussions</h2>
+
+  <div className="discussion-card">
+
+      <h3>
+        Best approach for Two Sum?
+      </h3>
+
+      <p>
+        15 replies • Beginner
+      </p>
+
+  </div>
+
+  <div className="discussion-card">
+
+      <h3>
+        Graph BFS vs DFS
+      </h3>
+
+      <p>
+        21 replies • Intermediate
+      </p>
+
+  </div>
+
+</section>
+<section className="testimonials">
+
+  <h2>
+    What Learners Say
+  </h2>
+
+  <div className="testimonial">
+
+    <p>
+      "DSA Lane helped me stay consistent
+      and improve my problem solving."
+    </p>
+
+    <span>
+      - Community Member
+    </span>
+
+  </div>
+
+</section>
+<section className="parallax">
+
+  <div className="parallax-overlay">
+
+    <h2>
+      Learn Together.
+      Grow Together.
+    </h2>
+
+  </div>
+
+</section>
 
       {/* FEATURES */}
 

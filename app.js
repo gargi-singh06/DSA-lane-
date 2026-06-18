@@ -9,6 +9,8 @@ app.use(cors({
 }));
 
 app.use(express.json());
+const landingRoutes =
+  require("./server/routes/landing");
 const homeRoutes = require("./server/routes/home");
 const http = require("http");
 const { Server } = require("socket.io");
@@ -26,6 +28,7 @@ const advancedRoutes = require("./server/routes/advanced");
 
 
 // ROUTES
+app.use("/landing", landingRoutes);
 app.use("/api/intermediate", intermediateRoutes);
 app.use("/api/beginner", beginnerRoutes);
 app.use("/api/advanced", advancedRoutes);
