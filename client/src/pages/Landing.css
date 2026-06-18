@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.landing {
+  background: #000;
+  color: white;
+}
+
+/* HERO */
+
+.hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 60px;
+
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: #22c55e;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.login-btn,
+.signup-btn,
+.hero-buttons button,
+.cta button {
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.signup-btn,
+.hero-buttons button,
+.cta button {
+  background: #22c55e;
+  color: white;
+}
+
+.secondary-btn {
+  background: transparent !important;
+  border: 2px solid white !important;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding-left: 8%;
+}
+
+.hero-content h1 {
+  font-size: 70px;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+/* ABOUT */
+
+.about {
+  padding: 120px 10%;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+
+.about p {
+  font-size: 24px;
+}
+
+/* FEATURES */
+
+.features {
+  padding: 100px 10%;
+}
+
+.features h2 {
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 50px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 30px;
+}
+
+.feature-card {
+  background: #111;
+  padding: 40px;
+  border-radius: 20px;
+
+  transition: 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  border: 1px solid #22c55e;
+}
+
+/* LEVELS */
+
+.levels {
+  padding: 120px 10%;
+}
+
+.levels h2 {
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 50px;
+}
+
+.level-container {
+  display: flex;
+  gap: 30px;
+}
+
+.level-card {
+  flex: 1;
+  background: #111;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.level-card:hover {
+  border: 1px solid #22c55e;
+}
+
+/* CTA */
+
+.cta {
+  padding: 120px 10%;
+  text-align: center;
+}
+
+.cta h2 {
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+
+footer {
+  background: #111;
+  padding: 50px;
+  text-align: center;
+}
