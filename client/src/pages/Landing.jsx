@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 function Landing() {
   const [stats, setStats] = useState({});
   const [scrolled, setScrolled] = useState(false);
+  const [showTopButton, setShowTopButton] = useState(false);
   useEffect(() => {
 
   fetch("http://localhost:3000/landing/stats")
@@ -21,13 +22,19 @@ useEffect(() => {
 
   const handleScroll = () => {
 
-    if (window.scrollY > 50) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
+  if (window.scrollY > 50) {
+    setScrolled(true);
+  } else {
+    setScrolled(false);
+  }
 
-  };
+  if (window.scrollY > 150) {
+    setShowTopButton(true);
+  } else {
+    setShowTopButton(false);
+  }
+
+};
 
   window.addEventListener(
     "scroll",
@@ -70,8 +77,16 @@ useEffect(() => {
 >
 
           <div className="logo">
-            DSA Lane
-          </div>
+
+  <div className="logo-icon">
+    &lt;/&gt;
+  </div>
+
+  <div className="logo-text">
+    DSA Lane
+  </div>
+
+</div>
 
           <ul>
 
@@ -368,6 +383,21 @@ useEffect(() => {
         </p>
 
       </footer>
+      {showTopButton && (
+
+  <button
+    className="scroll-top-btn"
+    onClick={() =>
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      })
+    }
+  >
+    ↑
+  </button>
+
+)}
 
     </div>
   );
