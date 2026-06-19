@@ -6,6 +6,42 @@ import "./Landing.css";
 import { Link } from "react-router-dom";
 
 function Landing() {
+  const [stats, setStats] = useState({});
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+
+  fetch("http://localhost:3000/landing/stats")
+    .then((res) => res.json())
+    .then((data) => {
+      setStats(data);
+    });
+
+}, []);
+useEffect(() => {
+
+  const handleScroll = () => {
+
+    if (window.scrollY > 50) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+
+  };
+
+  window.addEventListener(
+    "scroll",
+    handleScroll
+  );
+
+  return () =>
+    window.removeEventListener(
+      "scroll",
+      handleScroll
+    );
+
+}, []);
+
   return (
     <div className="landing">
 
@@ -25,7 +61,13 @@ function Landing() {
 
         <div className="overlay"></div>
 
-        <nav className="navbar">
+        <nav
+  className={
+    scrolled
+      ? "navbar scrolled"
+      : "navbar"
+  }
+>
 
           <div className="logo">
             DSA Lane
@@ -115,17 +157,32 @@ function Landing() {
       <section className="stats-section">
 
   <div className="stat-card">
-    <h2>500+</h2>
+    <h2>
+  <CountUp
+    end={stats.totalUsers || 0}
+    duration={2}
+  />
+</h2>
     <p>Problems Solved</p>
   </div>
 
   <div className="stat-card">
-    <h2>1000+</h2>
+    <h2>
+  <CountUp
+    end={stats.totalPosts || 0}
+    duration={2}
+  />
+</h2>
     <p>Community Posts</p>
   </div>
 
   <div className="stat-card">
-    <h2>200+</h2>
+    <h2>
+  <CountUp
+    end={stats.beginnerPosts || 0}
+    duration={2}
+  />
+</h2>
     <p>Active Members</p>
   </div>
 
