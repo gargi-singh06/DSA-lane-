@@ -8,57 +8,144 @@ html {
 }
 
 .landing {
-  background: #000;
+  background:
+    linear-gradient(
+      rgba(0,0,0,.75),
+      rgba(0,0,0,.85)
+    ),
+    url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3");
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-attachment: fixed;
+
   color: white;
+   min-height: 100vh;
 }
 
 /* HERO */
 
 .hero {
-  height: 100vh;
+
   position: relative;
+
+  min-height: 100vh;
+
   overflow: hidden;
+}
+.hero::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 200px;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0),
+      rgba(0,0,0,.35),
+      rgba(0,0,0,.65),
+      rgba(0,0,0,.95)
+    );
 }
 
 .hero-video {
+
   position: absolute;
+
+  top: 0;
+  left: 0;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
+
+  z-index: 0;
 }
 
 .overlay {
+
   position: absolute;
+
   inset: 0;
-  background: rgba(0,0,0,0.65);
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,.45),
+      rgba(0,0,0,.72)
+    );
+}
+body::-webkit-scrollbar{
+  width:12px;
+}
+
+body::-webkit-scrollbar-track{
+  background:#111;
+}
+
+body::-webkit-scrollbar-thumb{
+  background:#22c55e;
+  border-radius:20px;
 }
 .navbar.scrolled {
+  position: fixed;
 
-  padding: 15px 70px;
+  background: rgba(0,0,0,.85);
 
-  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(20px);
 
-  backdrop-filter: blur(15px);
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.45);
 }
 
 .navbar {
-  transition: all 0.3s ease;
+
   position: fixed;
+
+  top: 0;
+  left: 0;
+
   width: 100%;
-  z-index: 100;
+
+  z-index: 999999;
+
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
 
   padding: 20px 60px;
 
-  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,.55);
+
+  backdrop-filter: blur(16px);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.08);
 }
 .about,
 .features,
 .levels,
 .stats-section,
 .community-preview,
+.cta,
+.journey,
 .testimonials {
   scroll-margin-top: 120px;
 }
@@ -149,8 +236,8 @@ html {
 
 .hero-content {
   position: relative;
-  z-index: 5;
-
+  z-index: 6;
+  padding-top: 80px;
   height: 100vh;
 
   display: flex;
@@ -158,6 +245,20 @@ html {
   justify-content: center;
 
   padding-left: 8%;
+}
+.about,
+.features,
+.levels,
+.journey,
+.community-preview,
+.testimonials,
+.cta {
+
+  min-height: 80vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero-content h1 {
@@ -178,17 +279,44 @@ html {
 /* ABOUT */
 
 .about {
+
+
+   min-height: 100vh;
+
   padding: 120px 10%;
+
   text-align: center;
+
+  position: relative;
+
+  z-index: 2;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,.55),
+      rgba(0,0,0,.75)
+    ),
+    url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3");
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-attachment: fixed;
 }
 
 .about h2 {
-  font-size: 50px;
-  margin-bottom: 30px;
+  font-size: 5rem;
+  margin-bottom: 40px;
+  text-shadow:
+    0 5px 25px rgba(0,0,0,.5);
 }
 
 .about p {
-  font-size: 24px;
+  max-width: 1100px;
+  line-height: 1.8;
+  font-size: 1.4rem;
+  color: rgba(255,255,255,.9);
 }
 
 /* FEATURES */
