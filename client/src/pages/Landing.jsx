@@ -1,6 +1,6 @@
 import heroVideo from "../assets/videos/hero-video.mp4";
 import CountUp from "react-countup";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import "./Landing.css";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ function Landing() {
   const [stats, setStats] = useState({});
   const [scrolled, setScrolled] = useState(false);
   const [showTopButton, setShowTopButton] = useState(false);
+  const scrollRef = useRef(null);
   useEffect(() => {
 
   fetch("http://localhost:3000/landing/stats")
@@ -20,29 +21,29 @@ function Landing() {
 }, []);
 useEffect(() => {
 
+  const container = scrollRef.current;
+
   const handleScroll = () => {
 
-  if (window.scrollY > 50) {
-    setScrolled(true);
-  } else {
-    setScrolled(false);
-  }
+    const scrollPosition =
+      container.scrollTop;
 
-  if (window.scrollY > 150) {
-    setShowTopButton(true);
-  } else {
-    setShowTopButton(false);
-  }
+    setScrolled(
+      scrollPosition > 50
+    );
 
-};
+    setShowTopButton(
+      scrollPosition > 150
+    );
+  };
 
-  window.addEventListener(
+  container.addEventListener(
     "scroll",
     handleScroll
   );
 
   return () =>
-    window.removeEventListener(
+    container.removeEventListener(
       "scroll",
       handleScroll
     );
@@ -50,33 +51,16 @@ useEffect(() => {
 }, []);
 
   return (
-    <div className="landing">
+   <div className="landing">
 
-      {/* HERO */}
-
-      <section className="hero">
-
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="hero-video"
-        >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
-
-        <div className="overlay"></div>
-
-        <nav
-  className={
-    scrolled
-      ? "navbar scrolled"
-      : "navbar"
-  }
->
-
-          <div className="logo">
+  <nav
+    className={
+      scrolled
+        ? "navbar scrolled"
+        : "navbar"
+    }
+    >
+<div className="logo">
 
   <div className="logo-icon">
     &lt;/&gt;
@@ -93,11 +77,15 @@ useEffect(() => {
             <li>
               <a href="#about">About</a>
             </li>
-
+             <li>
+              <a href="#stats-section">Stats</a>
+            </li>
+            <li>
+              <a href="#journey">Journey</a>
+            </li>
             <li>
               <a href="#features">Features</a>
             </li>
-
             <li>
               <a href="#levels">Levels</a>
             </li>
@@ -119,9 +107,28 @@ useEffect(() => {
             </Link>
 
           </div>
+          </nav>
 
-        </nav>
 
+ <div
+    className="landing-scroll"
+    ref={scrollRef}
+  >
+      {/* HERO */}
+
+      <section className="hero">
+
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="hero-video"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
+
+        <div className="overlay"></div>
         <div className="hero-content">
 
           <h1>
@@ -131,23 +138,11 @@ useEffect(() => {
           </h1>
 
           <p>
-            Learn. Discuss. Grow.
+            Learn • Discuss • Grow |
             Join a thriving coding community.
           </p>
 
           <div className="hero-buttons">
-
-            <Link to="/signup">
-              <button>
-                Get Started
-              </button>
-            </Link>
-
-            <a href="#features">
-              <button className="secondary-btn">
-                Explore Features
-              </button>
-            </a>
 
           </div>
 
@@ -162,15 +157,24 @@ useEffect(() => {
         <h2>Why DSA Lane?</h2>
 
         <p>
-          Structured learning paths,
-          community discussions,
-          real coding growth and
-          interview preparation.
-        </p>
+    DSA Lane provides a complete learning ecosystem designed to help students,
+    aspiring software engineers, and competitive programmers build
+    strong problem-solving skills from the ground up.
+    Whether you are taking your first steps into Data Structures and
+    Algorithms or preparing for technical interviews at top companies,
+  </p>
+
+  <p>
+    Track your progress, engage in meaningful discussions, learn from
+    community-driven insights, and develop the confidence required to
+    tackle real-world coding challenges. Our goal is simple:
+    transform consistency into mastery and help every learner become
+    interview-ready through practice, collaboration, and continuous growth.
+  </p>
 
       </section>
-      <section className="stats-section">
-
+      <section id="stats-section" className="stats-section">
+<h2>STATS</h2>
   <div className="stat-card">
     <h2>
   <CountUp
@@ -202,7 +206,7 @@ useEffect(() => {
   </div>
 
 </section>
-<section className="journey">
+<section id="journey" className="journey">
 
   <h2>Your DSA Journey</h2>
 
@@ -227,55 +231,6 @@ useEffect(() => {
     <div className="step">
       Become Interview Ready
     </div>
-
-  </div>
-
-</section>
-<section className="community-preview">
-
-  <h2>Community Discussions</h2>
-
-  <div className="discussion-card">
-
-      <h3>
-        Best approach for Two Sum?
-      </h3>
-
-      <p>
-        15 replies • Beginner
-      </p>
-
-  </div>
-
-  <div className="discussion-card">
-
-      <h3>
-        Graph BFS vs DFS
-      </h3>
-
-      <p>
-        21 replies • Intermediate
-      </p>
-
-  </div>
-
-</section>
-<section className="testimonials">
-
-  <h2>
-    What Learners Say
-  </h2>
-
-  <div className="testimonial">
-
-    <p>
-      "DSA Lane helped me stay consistent
-      and improve my problem solving."
-    </p>
-
-    <span>
-      - Community Member
-    </span>
 
   </div>
 
@@ -321,10 +276,6 @@ useEffect(() => {
             Analytics
           </div>
 
-          <div className="feature-card">
-            Password Generator
-          </div>
-
         </div>
 
       </section>
@@ -339,17 +290,17 @@ useEffect(() => {
 
           <div className="level-card">
             <h3>Beginner</h3>
-            <p>Arrays, Strings, Sorting</p>
+            <p></p>
           </div>
 
           <div className="level-card">
             <h3>Intermediate</h3>
-            <p>Stacks, Queues, Trees</p>
+            <p></p>
           </div>
 
           <div className="level-card">
             <h3>Advanced</h3>
-            <p>Graphs, DP, Greedy</p>
+            <p></p>
           </div>
 
         </div>
@@ -388,17 +339,17 @@ useEffect(() => {
   <button
     className="scroll-top-btn"
     onClick={() =>
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      })
-    }
+  scrollRef.current.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  })
+}
   >
     ↑
   </button>
 
 )}
-
+  </div>
     </div>
   );
 }

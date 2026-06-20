@@ -6,7 +6,19 @@ html {
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  overflow:hidden;
+}
+.landing-scroll{
 
+  height:100vh;
+
+  overflow-y:auto;
+
+  overflow-x:hidden;
+
+  scroll-behavior:smooth;
+}
 .landing {
   background:
     linear-gradient(
@@ -16,7 +28,7 @@ html {
     url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3");
 
   background-size: cover;
-
+  overflow-y: auto;
   background-position: center;
 
   background-attachment: fixed;
@@ -152,17 +164,9 @@ body::-webkit-scrollbar-thumb{
 
 .logo-icon {
 
-  width: 50px;
+  width: 70px;
 
-  height: 50px;
-
-  border-radius: 12px;
-
-  background: linear-gradient(
-    135deg,
-    #22c55e,
-    #3b82f6
-  );
+  height: 70px;
 
   display: flex;
 
@@ -170,30 +174,28 @@ body::-webkit-scrollbar-thumb{
 
   align-items: center;
 
-  color: white;
+  color:#38bdf8;
 
-  font-size: 1.3rem;
-
-  font-weight: 700;
+  font-size:30px;
+  font-weight:700;
 }
 .logo-text {
 
-  font-size: 2rem;
+  font-size:30px;
+  font-weight:700;
 
-  font-weight: 700;
-
-  color: white;
+  color:#38bdf8;
 
   letter-spacing: -1px;
 }
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   cursor: pointer;
-  font-size: 30px;
-  font-weight: bold;
-  color: #22c55e;
+  font-size:30px;
+  font-weight:700;
+  color:#38bdf8;
 }
 
 .navbar ul {
