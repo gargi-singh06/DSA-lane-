@@ -174,7 +174,8 @@ useEffect(() => {
 
       </section>
       <section id="stats-section" className="stats-section">
-<h2>STATS</h2>
+<h2>Platform Statistics</h2>
+<div className="landing-stats-grid">
   <div className="stat-card">
     <h2>
   <CountUp
@@ -184,7 +185,6 @@ useEffect(() => {
 </h2>
     <p>Problems Solved</p>
   </div>
-
   <div className="stat-card">
     <h2>
   <CountUp
@@ -204,32 +204,70 @@ useEffect(() => {
 </h2>
     <p>Active Members</p>
   </div>
-
+</div>
 </section>
 <section id="journey" className="journey">
 
   <h2>Your DSA Journey</h2>
 
-  <div className="timeline">
+  <div className="roadmap">
 
-    <div className="step">
-      Sign Up
+    <div className="roadmap-step">
+      <div className="step-number">01</div>
+      <h3>Sign Up</h3>
+      <p>
+        Create your account and unlock access
+        to structured DSA learning paths and
+        community features.
+      </p>
     </div>
 
-    <div className="step">
-      Choose Level
+    <div className="roadmap-line"></div>
+
+    <div className="roadmap-step">
+      <div className="step-number">02</div>
+      <h3>Choose Your Level</h3>
+      <p>
+        Start with Beginner, Intermediate,
+        or Advanced based on your current
+        problem solving experience.
+      </p>
     </div>
 
-    <div className="step">
-      Solve Problems
+    <div className="roadmap-line"></div>
+
+    <div className="roadmap-step">
+      <div className="step-number">03</div>
+      <h3>Solve Problems</h3>
+      <p>
+        Practice curated DSA questions and
+        strengthen your coding foundations
+        through consistency.
+      </p>
     </div>
 
-    <div className="step">
-      Join Discussions
+    <div className="roadmap-line"></div>
+
+    <div className="roadmap-step">
+      <div className="step-number">04</div>
+      <h3>Join Discussions</h3>
+      <p>
+        Learn from community insights,
+        share approaches, and explore
+        different problem solving strategies.
+      </p>
     </div>
 
-    <div className="step">
-      Become Interview Ready
+    <div className="roadmap-line"></div>
+
+    <div className="roadmap-step">
+      <div className="step-number">05</div>
+      <h3>Interview Ready</h3>
+      <p>
+        Build confidence for coding rounds
+        and technical interviews through
+        continuous practice.
+      </p>
     </div>
 
   </div>
@@ -252,60 +290,101 @@ useEffect(() => {
 
       <section id="features" className="features">
 
-        <h2>Features</h2>
+  <h2>Features</h2>
 
-        <div className="feature-grid">
+  <div className="feature-grid">
 
-          <div className="feature-card">
-            Problem Tracking
-          </div>
+    <div className="feature-card">
+      <h3>Problem Tracking</h3>
+      <p>
+        Track solved problems and monitor progress.
+      </p>
+    </div>
 
-          <div className="feature-card">
-            Discussion Forum
-          </div>
+    <div className="feature-card">
+      <h3>Discussion Forum</h3>
+      <p>
+        Ask questions and learn from the community.
+      </p>
+    </div>
 
-          <div className="feature-card">
-            Leaderboards
-          </div>
+    <div className="feature-card">
+      <h3>Leaderboards</h3>
+      <p>
+        Compare performance and stay motivated.
+      </p>
+    </div>
 
-          <div className="feature-card">
-            User Profiles
-          </div>
+    <div className="feature-card">
+      <h3>User Profiles</h3>
+      <p>
+        Showcase activity, achievements, and growth.
+      </p>
+    </div>
 
-          <div className="feature-card">
-            Analytics
-          </div>
+    <div className="feature-card">
+      <h3>Analytics</h3>
+      <p>
+        Visual insights into your learning journey.
+      </p>
+    </div>
 
-        </div>
+  </div>
 
-      </section>
+</section>
 
       {/* LEVELS */}
+<section id="levels" className="levels">
 
-      <section id="levels" className="levels">
+  <h2>Skill Levels</h2>
 
-        <h2>Learning Path</h2>
+  <p className="levels-subtitle">
+    DSA Lane automatically categorizes learners
+    based on their coding profiles and current
+    problem-solving ability.
+  </p>
 
-        <div className="level-container">
+  <div className="level-container">
 
-          <div className="level-card">
-            <h3>Beginner</h3>
-            <p></p>
-          </div>
+    <div className="level-card">
 
-          <div className="level-card">
-            <h3>Intermediate</h3>
-            <p></p>
-          </div>
+      <h3>Beginner</h3>
 
-          <div className="level-card">
-            <h3>Advanced</h3>
-            <p></p>
-          </div>
+      <p>
+        Starting your problem-solving journey and
+        building confidence through consistent
+        practice and learning.
+      </p>
 
-        </div>
+    </div>
 
-      </section>
+    <div className="level-card">
+
+      <h3>Intermediate</h3>
+
+      <p>
+        Comfortable with common patterns and
+        actively improving speed, accuracy,
+        and solution quality.
+      </p>
+
+    </div>
+
+    <div className="level-card">
+
+      <h3>Advanced</h3>
+
+      <p>
+        Strong competitive and interview-level
+        problem solver capable of handling
+        complex challenges efficiently.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* CTA */}
 

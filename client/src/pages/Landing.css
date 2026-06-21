@@ -183,7 +183,7 @@ body::-webkit-scrollbar-thumb{
 
   font-size:30px;
   font-weight:700;
-
+  margin-left: -12px;
   color:#38bdf8;
 
   letter-spacing: -1px;
@@ -191,7 +191,7 @@ body::-webkit-scrollbar-thumb{
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   cursor: pointer;
   font-size:30px;
   font-weight:700;
@@ -324,15 +324,13 @@ body::-webkit-scrollbar-thumb{
 /* FEATURES */
 
 .features {
-  padding: 100px 10%;
-}
 
-.features h2 {
+  min-height: 100vh;
+
+  padding: 120px 8%;
+
   text-align: center;
-  margin-bottom: 60px;
-  font-size: 50px;
 }
-
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -340,44 +338,139 @@ body::-webkit-scrollbar-thumb{
 }
 
 .feature-card {
-  background: #111;
-  padding: 40px;
-  border-radius: 20px;
 
-  transition: 0.3s;
+  background: rgba(10,10,10,.8);
+
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  border-radius: 22px;
+
+  padding: 30px;
+
+  min-height: 170px;
+
+  transition: .3s;
+
+  text-align: left;
+}
+.features h2 {
+
+  text-align: center;
+
+  font-size: 5rem;
+
+  margin-bottom: 70px;
+
+  color: white;
+
+  text-shadow:
+    0 5px 25px rgba(0,0,0,.5);
+}
+.feature-card:hover {
+
+  transform: translateY(-8px);
+
+  border: 1px solid #22c55e;
 }
 
-.feature-card:hover {
-  transform: translateY(-10px);
-  border: 1px solid #22c55e;
+.feature-card h3 {
+
+  font-size: 1.5rem;
+
+  margin-bottom: 12px;
+
+  color: white;
+}
+
+.feature-card p {
+
+  color: #bdbdbd;
+
+  line-height: 1.6;
+
+  font-size: .95rem;
 }
 
 /* LEVELS */
 
 .levels {
-  padding: 120px 10%;
+
+  min-height: 100vh;
+
+  padding: 120px 8%;
+
+  text-align: center;
 }
 
 .levels h2 {
-  text-align: center;
-  margin-bottom: 60px;
-  font-size: 50px;
+
+  font-size: 5rem;
+
+  margin-bottom: 30px;
+}
+
+.levels-subtitle {
+
+  max-width: 900px;
+
+  margin: 0 auto 90px;
+
+  font-size: 1.25rem;
+
+  color: #cfcfcf;
+
+  line-height: 1.8;
 }
 
 .level-container {
   display: flex;
   gap: 30px;
 }
+.level-card p {
 
+  color: #bdb8b8ea;
+
+  line-height: 1.9;
+
+  font-size: 1.1rem;
+
+  max-width: 320px;
+
+  margin: 0 auto;
+}.level-card h3{
+font-size: 1.7rem;
+  margin-bottom:28px;
+}
 .level-card {
+
   flex: 1;
-  background: #111;
-  padding: 40px;
-  border-radius: 20px;
+
+  min-width: 320px;
+
+  background: rgba(10,10,10,.8);
+
+  backdrop-filter: blur(12px);
+
+  border-radius: 24px;
+
+  padding: 50px 40px;
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  text-align: center;
+
+  transition: all .3s ease;
 }
 
 .level-card:hover {
-  border: 1px solid #22c55e;
+
+  transform: translateY(-10px);
+
+   border: 1px solid #22c55e;
+
+  box-shadow: none;
 }
 
 /* CTA */
@@ -397,16 +490,46 @@ footer {
   padding: 50px;
   text-align: center;
 }
-.stats-section{
-  padding:100px 8%;
+.stats-section {
 
-  display:flex;
-  justify-content:center;
-  gap:40px;
+  min-height: 80vh;
 
-  background:#050505;
+  padding: 120px 8%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
 }
+.landing-stats-grid {
 
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 40px;
+
+  flex-wrap: wrap;
+}
+.stats-section h2 {
+
+  font-size: 4.5rem;
+
+  margin-bottom: 70px;
+
+  font-weight: 700;
+
+  letter-spacing: -2px;
+
+  color: white;
+
+  text-shadow:
+    0 5px 25px rgba(0,0,0,.5);
+}
 .stat-card{
   width:280px;
 
@@ -420,12 +543,10 @@ footer {
 
   transition:.3s;
 }
-
 .stat-card:hover{
   transform:translateY(-10px);
   border:1px solid #22c55e;
 }
-
 .stat-card h2{
   font-size:3rem;
   color:#22c55e;
@@ -435,14 +556,123 @@ footer {
 .stat-card p{
   color:#ccc;
 }
-.journey{
-  padding:120px 8%;
-  text-align:center;
+.journey {
+
+  min-height: 100vh;
+
+  padding: 120px 8%;
+
+  text-align: center;
 }
 
-.journey h2{
-  font-size:3rem;
-  margin-bottom:70px;
+.journey h2 {
+
+  font-size: 5rem;
+
+  margin-bottom: 90px;
+}
+
+.roadmap {
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  gap: 25px;
+
+  flex-wrap: wrap;
+}
+
+.roadmap-step {
+
+  width: 250px;
+
+  padding: 35px;
+
+  border-radius: 24px;
+
+  background:
+    rgba(10,10,10,.8);
+
+  backdrop-filter: blur(12px);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  transition: .3s;
+}
+
+.roadmap-step:hover {
+
+  transform:
+    translateY(-10px);
+
+  border:
+    1px solid #22c55e;
+}
+
+.step-number {
+
+  width: 70px;
+
+  height: 70px;
+
+  margin: 0 auto 25px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-size: 1.5rem;
+
+  font-weight: 700;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #22c55e,
+      #3b82f6
+    );
+}
+
+.roadmap-step h3 {
+
+  margin-bottom: 15px;
+
+  font-size: 1.5rem;
+}
+
+.roadmap-step p {
+
+  color: #ccc;
+
+  line-height: 1.7;
+}
+
+.roadmap-line {
+
+  width: 70px;
+
+  height: 4px;
+
+  margin-top: 35px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #22c55e,
+      #3b82f6
+    );
+
+  border-radius: 20px;
 }
 
 .timeline{
