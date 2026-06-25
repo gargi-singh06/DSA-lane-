@@ -1,7 +1,14 @@
 import heroVideo from "../assets/videos/hero-video.mp4";
 import CountUp from "react-countup";
 import { useEffect, useState, useRef } from "react";
-
+import {
+  FaUsers,
+  FaComments,
+  FaChartLine,
+  FaTrophy,
+  FaUserCircle,
+  FaSignal,
+} from "react-icons/fa";
 import "./Landing.css";
 import { Link } from "react-router-dom";
 
@@ -11,7 +18,6 @@ function Landing() {
   const [showTopButton, setShowTopButton] = useState(false);
   const scrollRef = useRef(null);
   useEffect(() => {
-
   fetch("http://localhost:3000/landing/stats")
     .then((res) => res.json())
     .then((data) => {
@@ -20,34 +26,18 @@ function Landing() {
 
 }, []);
 useEffect(() => {
-
-  const container = scrollRef.current;
-
   const handleScroll = () => {
+    const scrollPosition = window.scrollY;
 
-    const scrollPosition =
-      container.scrollTop;
-
-    setScrolled(
-      scrollPosition > 50
-    );
-
-    setShowTopButton(
-      scrollPosition > 150
-    );
+    setScrolled(scrollPosition > 50);
+    setShowTopButton(scrollPosition > 150);
   };
 
-  container.addEventListener(
-    "scroll",
-    handleScroll
-  );
+  window.addEventListener("scroll", handleScroll);
 
-  return () =>
-    container.removeEventListener(
-      "scroll",
-      handleScroll
-    );
-
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
 }, []);
 
   return (
@@ -176,32 +166,28 @@ useEffect(() => {
       <section id="stats-section" className="stats-section">
 <h2>Platform Statistics</h2>
 <div className="landing-stats-grid">
-  <div className="stat-card">
+
+  <div className="stat-card stat-green">
+    <FaUsers className="land-stat-icon" />
     <h2>
-  <CountUp
-    end={stats.totalUsers || 0}
-    duration={2}
-  />
-</h2>
+      <CountUp end={stats.totalUsers || 0} duration={2} />
+    </h2>
     <p>Problems Solved</p>
   </div>
-  <div className="stat-card">
+
+  <div className="stat-card stat-blue">
+    <FaComments className="land-stat-icon" />
     <h2>
-  <CountUp
-    end={stats.totalPosts || 0}
-    duration={2}
-  />
-</h2>
+      <CountUp end={stats.totalPosts || 0} duration={2} />
+    </h2>
     <p>Community Posts</p>
   </div>
 
-  <div className="stat-card">
+  <div className="stat-card stat-purple">
+    <FaUsers className="land-stat-icon" />
     <h2>
-  <CountUp
-    end={stats.beginnerPosts || 0}
-    duration={2}
-  />
-</h2>
+      <CountUp end={stats.beginnerPosts || 0} duration={2} />
+    </h2>
     <p>Active Members</p>
   </div>
 </div>
@@ -294,45 +280,39 @@ useEffect(() => {
 
   <div className="feature-grid">
 
-    <div className="feature-card">
+    <div className="feature-card feature-green">
+      <FaChartLine className="feature-icon" />
       <h3>Problem Tracking</h3>
-      <p>
-        Track solved problems and monitor progress.
-      </p>
+      <p>Track solved problems and monitor progress.</p>
     </div>
 
-    <div className="feature-card">
+    <div className="feature-card feature-blue">
+      <FaComments className="feature-icon" />
       <h3>Discussion Forum</h3>
-      <p>
-        Ask questions and learn from the community.
-      </p>
+      <p>Ask questions and learn from the community.</p>
     </div>
 
-    <div className="feature-card">
+    <div className="feature-card feature-purple">
+      <FaTrophy className="feature-icon" />
       <h3>Leaderboards</h3>
-      <p>
-        Compare performance and stay motivated.
-      </p>
+      <p>Compare performance and stay motivated.</p>
     </div>
 
-    <div className="feature-card">
+    <div className="feature-card feature-gold">
+      <FaUserCircle className="feature-icon" />
       <h3>User Profiles</h3>
-      <p>
-        Showcase activity, achievements, and growth.
-      </p>
+      <p>Showcase activity, achievements, and growth.</p>
     </div>
 
-    <div className="feature-card">
+    <div className="feature-card feature-green">
+      <FaChartLine className="feature-icon" />
       <h3>Analytics</h3>
-      <p>
-        Visual insights into your learning journey.
-      </p>
+      <p>Visual insights into your learning journey.</p>
     </div>
 
   </div>
 
 </section>
-
       {/* LEVELS */}
 <section id="levels" className="levels">
 
@@ -348,7 +328,10 @@ useEffect(() => {
 
     <div className="level-card">
 
-      <h3>Beginner</h3>
+      <h3>
+  <FaSignal className="level-icon beginner-icon" />
+  Beginner
+</h3>
 
       <p>
         Starting your problem-solving journey and
@@ -360,7 +343,10 @@ useEffect(() => {
 
     <div className="level-card">
 
-      <h3>Intermediate</h3>
+      <h3>
+  <FaChartLine className="level-icon intermediate-icon" />
+  Intermediate
+</h3>
 
       <p>
         Comfortable with common patterns and
@@ -372,7 +358,10 @@ useEffect(() => {
 
     <div className="level-card">
 
-      <h3>Advanced</h3>
+     <h3>
+  <FaTrophy className="level-icon advanced-icon" />
+  Advanced
+</h3>
 
       <p>
         Strong competitive and interview-level
@@ -417,8 +406,8 @@ useEffect(() => {
 
   <button
     className="scroll-top-btn"
-    onClick={() =>
-  scrollRef.current.scrollTo({
+onClick={() =>
+  window.scrollTo({
     top: 0,
     behavior: "smooth"
   })
