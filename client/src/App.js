@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Landing from "./pages/Landing";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Dashboard from "./pages/Dashboard"; // Beginner
+import Dashboard from "./pages/Dashboard";
 import IntermediateDashboard from "./pages/IntermediateDashboard";
-import AdvancedDashboard from "./pages/advanceDashboard"; // ✅ ADD THIS
+import AdvancedDashboard from "./pages/advanceDashboard";
+
 import "./App.css";
 
 function App() {
@@ -12,11 +12,10 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/intermediate" element={<IntermediateDashboard />} />
-        <Route path="/advanced" element={<AdvancedDashboard />} /> {/* ✅ ADD */}
+        <Route path="/advanced" element={<AdvancedDashboard />} />
       </Routes>
     </Router>
   );

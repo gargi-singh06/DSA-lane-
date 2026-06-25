@@ -210,7 +210,7 @@ function Signup() {
         {/* SWITCH */}
         <p className="auth-switch">
           Already have an account?
-          <span onClick={() => navigate("/")}> Sign In</span>
+          <span onClick={() => navigate("/login")}> Sign In</span>
         </p>
 
       </div>

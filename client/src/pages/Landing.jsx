@@ -1,4 +1,5 @@
 import heroVideo from "../assets/videos/hero-video.mp4";
+import AuthModal from "../components/AuthModal";
 import CountUp from "react-countup";
 import { useEffect, useState, useRef } from "react";
 import {
@@ -10,12 +11,13 @@ import {
   FaSignal,
 } from "react-icons/fa";
 import "./Landing.css";
-import { Link } from "react-router-dom";
 
 function Landing() {
   const [stats, setStats] = useState({});
-  const [scrolled, setScrolled] = useState(false);
   const [showTopButton, setShowTopButton] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
+const [authMode, setAuthMode] = useState("login");
+  const [scrolled, setScrolled] = useState(false);
   const scrollRef = useRef(null);
   useEffect(() => {
   fetch("http://localhost:3000/landing/stats")
@@ -41,7 +43,9 @@ useEffect(() => {
 }, []);
 
   return (
-   <div className="landing">
+   <div
+  className={`landing ${authOpen ? "modal-open" : ""}`}
+>
 
   <nav
     className={
@@ -84,26 +88,38 @@ useEffect(() => {
 
           <div className="auth-buttons">
 
-            <Link to="/login">
-              <button className="login-btn">
-                Login
-              </button>
-            </Link>
+            <button
+  className="login-btn"
+  onClick={()=>{
+      setAuthMode("login");
+      setAuthOpen(true);
+  }}
+>
+    Login
+</button>
 
-            <Link to="/signup">
-              <button className="signup-btn">
-                Sign Up
-              </button>
-            </Link>
+          <button
+    className="signup-btn"
+    onClick={()=>{
+        setAuthMode("signup");
+        setAuthOpen(true);
+    }}
+>
+    Sign Up
+</button>
 
           </div>
           </nav>
 
 
- <div
+<div
     className="landing-scroll"
     ref={scrollRef}
-  >
+    style={{
+        pointerEvents: authOpen ? "none" : "auto",
+        userSelect: authOpen ? "none" : "auto"
+    }}
+>
       {/* HERO */}
 
       <section className="hero">
@@ -383,11 +399,14 @@ useEffect(() => {
           Ready To Begin Your DSA Journey?
         </h2>
 
-        <Link to="/signup">
-          <button>
-            Join Now
-          </button>
-        </Link>
+        <button
+    onClick={()=>{
+        setAuthMode("signup");
+        setAuthOpen(true);
+    }}
+>
+    Join Now
+</button>
 
       </section>
 
@@ -418,6 +437,12 @@ onClick={() =>
 
 )}
   </div>
+  <AuthModal
+    isOpen={authOpen}
+    mode={authMode}
+    setMode={setAuthMode}
+    onClose={() => setAuthOpen(false)}
+/>
     </div>
   );
 }

@@ -898,3 +898,12 @@ body,
   justify-content: center !important;
   align-items: center !important;
 }
+.landing.modal-open .landing-scroll{
+    filter:brightness(.45);
+    transition:.35s ease;
+}
+
+.landing.modal-open .navbar{
+    filter:brightness(.45);
+    transition:.35s ease;
+}
