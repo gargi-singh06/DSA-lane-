@@ -291,7 +291,7 @@ function SignupForm({ onSwitch }) {
         Already have an account?
         <span onClick={onSwitch}> Sign In</span>
       </p>
-
+      <div style={{ height: "20px" }}></div>
     </div>
   );
 }

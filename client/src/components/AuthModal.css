@@ -22,43 +22,79 @@
     width:100%;
     max-width:620px;
 
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
     padding:20px;
 
-    transform-origin:center;
+    border-radius:30px;
 
     animation:pop .28s cubic-bezier(.17,.84,.44,1);
+
+    scrollbar-width:thin;
+    scrollbar-color:#38bdf8 transparent;
+}
+.modal-content::-webkit-scrollbar{
+    width:8px;
+}
+
+.modal-content::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb{
+    background:#38bdf8;
+    border-radius:999px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover{
+    background:#67e8f9;
 }
 
 .close-modal{
 
     position:absolute;
 
-    top:25px;
+    top:35px;
+
     right:35px;
 
-    width:42px;
-    height:42px;
+    width:38px;
+    height:38px;
 
-    border:none;
     border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.04);
+
+    backdrop-filter:blur(12px);
+
+    color:#94a3b8;
+
+    font-size:22px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
     cursor:pointer;
 
-    color:white;
-    font-size:26px;
+    transition:.25s;
 
-    background:rgba(255,255,255,.08);
-
-    transition:.3s;
+    z-index:100;
 }
 
 .close-modal:hover{
 
+    color:white;
+
     background:#ef4444;
 
-    transform:
-        rotate(90deg)
-        scale(1.08);
+    transform:rotate(90deg) scale(1.08);
 }
 
 @keyframes fadeIn{
