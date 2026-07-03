@@ -649,11 +649,16 @@ box-shadow:
     overflow:hidden;
 
     background:
-    rgba(7,12,25,.76);
+linear-gradient(
+145deg,
+rgba(12,18,35,.92),
+rgba(8,12,28,.92)
+);
 
     backdrop-filter:blur(24px);
 
-    border:1px solid rgba(255,255,255,.08);
+    border:
+1px solid rgba(56,189,248,.15);
 
     box-shadow:
     0 30px 80px rgba(0,0,0,.55);
