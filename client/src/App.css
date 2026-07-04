@@ -378,17 +378,17 @@ linear-gradient(
 
 135deg,
 
-#38bdf8,
+#2dbcb0,
 
-#2563eb,
+#0e8960,
 
-#1d4ed8
+#0a5002
 
 );
 
 box-shadow:
 
-0 15px 35px rgba(37,99,235,.35);
+0 15px 35px rgba(21, 71, 4, 0.35);
 
 transition:.35s;
 
@@ -402,7 +402,7 @@ translateY(-4px);
 
 box-shadow:
 
-0 25px 45px rgba(37,99,235,.5);
+0 25px 45px rgba(21, 107, 58, 0.5);
 
 }
 .home-hero{
@@ -769,7 +769,7 @@ box-shadow:
 }
 
 .auth-switch span{
-  color:#38bdf8;
+  color:#0d835d;
   cursor:pointer;
   font-weight:600;
 }
@@ -802,7 +802,7 @@ box-shadow:
 
   background:transparent;
 
-  color:#38bdf8;
+  color:#16845f;
 
   cursor:pointer;
 
@@ -812,7 +812,7 @@ box-shadow:
 }
 
 .eyeBtn:hover{
-  color:#67e8f9;
+  color:#144f09;
 }
 
 .password-suggest{
@@ -827,7 +827,7 @@ font-size:19px;
 
 font-weight:600;
 
-color:#38bdf8;
+color:#157861;
 
 cursor:pointer;
 
@@ -837,11 +837,11 @@ transition:.25s;
 
 .password-suggest:hover{
 
-color:#67e8f9;
+color:#115e16;
 
 text-shadow:
 
-0 0 12px rgba(56,189,248,.4);
+0 0 12px rgba(4, 108, 105, 0.4);
 
 }
 
