@@ -48,6 +48,7 @@ url("https://plus.unsplash.com/premium_photo-1661877737564-3dfd7282efcb?w=600&au
   position: relative;
   min-height: 100vh;
   overflow: hidden;
+  
 }
 .hero::after {
   content: "";
