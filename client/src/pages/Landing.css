@@ -21,7 +21,7 @@ body,
 }
 body{
   overflow-x:hidden;
-  overflow-y:hidden;
+  overflow-y:auto;
 }
 .landing-scroll{
   min-height:100vh;
@@ -48,7 +48,7 @@ url("https://plus.unsplash.com/premium_photo-1661877737564-3dfd7282efcb?w=600&au
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-  
+
 }
 .hero::after {
   content: "";
@@ -87,28 +87,31 @@ url("https://plus.unsplash.com/premium_photo-1661877737564-3dfd7282efcb?w=600&au
       rgba(0,0,0,.60)
     );
 }
-.landing-scroll::-webkit-scrollbar{
-  width:10px;
+/* Cyberpunk Green Scrollbar */
+.landing-scroll::-webkit-scrollbar {
+    width: 12px;
 }
-.landing-scroll::-webkit-scrollbar-track{
-  background:transparent;
-}
-.landing-scroll::-webkit-scrollbar-thumb{
-  background:rgba(255,255,255,.25);
-  border-radius:20px;
-}
-.landing-scroll::-webkit-scrollbar-thumb:hover{
-  background:rgba(255,255,255,.45);
-}
-.navbar.scrolled {
-  position: fixed;
 
-  background: rgba(0,0,0,.85);
+.landing-scroll::-webkit-scrollbar-track {
+    background: #050816;
+}
 
-  backdrop-filter: blur(20px);
+.landing-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        180deg,
+        #22c55e 0%,
+        #16a34a 100%
+    );
+    border-radius: 999px;
+    border: 2px solid #050816;
+}
 
-  box-shadow:
-    0 10px 35px rgba(0,0,0,.45);
+.landing-scroll::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+        180deg,
+        #4ade80 0%,
+        #22c55e 100%
+    );
 }
 
 .navbar{

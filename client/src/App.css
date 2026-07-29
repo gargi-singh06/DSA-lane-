@@ -17,11 +17,12 @@ body,
 #root{
     width:100%;
     min-height:100vh;
-    overflow:hidden;
+    overflow-x:hidden;
+    overflow-y:auto;
 
     font-family:"Poppins",sans-serif;
 
-    color:#ffffff;
+    color:#fff;
 
     background:#000;
 }
@@ -52,7 +53,8 @@ background-attachment:fixed;
 
 position:relative;
 
-overflow:hidden;
+overflow-x:hidden;
+overflow-y:auto;
 
 }
 
