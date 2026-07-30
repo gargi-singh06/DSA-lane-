@@ -69,6 +69,7 @@ function LoginForm({ onSwitch, onClose }) {
       <h1>Welcome Back</h1>
 
       <input
+  className="auth-input"
         type="email"
         placeholder="Email Address"
         value={email}
@@ -77,6 +78,7 @@ function LoginForm({ onSwitch, onClose }) {
       />
 
       <input
+  className="auth-input"
         type="password"
         placeholder="Password"
         value={password}

@@ -169,6 +169,7 @@ function SignupForm({ onSwitch }) {
       <h1>Create Account</h1>
 
       <input
+  className="auth-input"
         placeholder="Username"
         value={data.username}
         onChange={(e) =>
@@ -179,7 +180,8 @@ function SignupForm({ onSwitch }) {
         }
       />
 
-      <input
+     <input
+  className="auth-input"
         placeholder="Email"
         type="email"
         value={data.email}
@@ -196,6 +198,7 @@ function SignupForm({ onSwitch }) {
         <div className="inputContainer">
 
           <input
+  className="auth-input"
             type={showPassword ? "text" : "password"}
             maxLength={10}
             placeholder="Password"
@@ -258,6 +261,7 @@ function SignupForm({ onSwitch }) {
       </div>
 
       <input
+  className="auth-input"
         placeholder="Codeforces Handle (Optional)"
         value={data.codeforcesHandle}
         onChange={(e) =>
@@ -269,6 +273,7 @@ function SignupForm({ onSwitch }) {
       />
 
       <input
+  className="auth-input"
         placeholder="Leetcode Username (Optional)"
         value={data.leetcodeUsername}
         onChange={(e) =>
